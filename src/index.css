@@ -113,3 +113,126 @@ nav .nav-button:disabled{
   margin: 7px;
   padding: 7px;
 }
+/* UserInformation Page CSS */
+
+
+  .UserInfornation form{
+    display: flex;
+    justify-content: center;
+  }
+
+  .UserInfornation{
+    border-top: 1px solid #b3b3b3;
+  }
+  
+
+.DashBoard{
+  justify-content: space-between;
+  display: flex;
+}
+
+.swipe {
+  position: absolute;
+}
+.DashBoard .match_swipe_container{
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+
+.DashBoard .main_card_container {
+  width: 350px;
+  /* max-width: 370px; */
+  height: 500px;
+  /* max-height: 570px; */
+}
+.DashBoard .Direction_Swipt{
+  bottom: 0;
+  position: absolute;
+  padding: 30px;
+}
+
+.card {
+  /* position: relative; */
+  background-color: #fff;
+  width: 350px;
+  /* max-width: 370px; */
+  height: 500px;
+  max-height: 570px;
+  box-shadow: 0px 0px 60px 0px rgba(192, 192, 192, 0.3);
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+.cardContent {
+  width: 100%;
+  height: 100%;
+}
+
+.swipe:last-of-type {
+
+}
+
+.card h3 {
+  position: absolute;
+  bottom: 0;
+  margin: 10px;
+  color: #fff;
+}
+
+  .UserInfornation form section{
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    width: 40%;
+    text-align: start;
+  }
+  .UserInfornation form input[type="checkbox"]{
+    margin-right: 516px;
+  } 
+  .UserInfornation form input[type="number"]{
+    width: 25%;
+  }
+  .UserInfornation form input{
+    padding: 13px 28px;
+    margin: 8px;
+    font-size: 13px;
+    border-radius: 12px;
+    border: solid 2px rgb(163, 161, 161);
+
+  }
+  .UserInfornation form .All_input_Container{
+    display: flex;
+    flex-direction: row;
+  }
+  .UserInfornation form .All_input_Container input{
+    margin-bottom: 8px;
+  }
+  .UserInfornation form input[type="radio"]{
+    display: none;
+  }
+  .UserInfornation form input[type="submit"]:hover{
+    background-color: #ccc9b7;
+  }
+  .UserInfornation form input[type="radio"]:checked + label
+  {
+    border: solid 2px rgb(26, 26, 182);
+  }
+  .UserInfornation form label{
+    margin: 8px 0px;
+  }
+  .UserInfornation form .All_input_Container label{
+    padding: 8px;
+    border-radius: 12px;
+    transition: all 0.3s;
+    margin-right: 8px;
+    border: solid 2px rgb(150, 141, 141);
+  }
+  .UserInfornation form .image-container img{
+    width: 100%;
+  }
+/* UserInformation Page CSS END */

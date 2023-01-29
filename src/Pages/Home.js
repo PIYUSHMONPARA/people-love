@@ -1,6 +1,7 @@
 import NavigationBar from "../Components/NavigationBar";
 import AuthenticationModel from "../Components/AuthenticationModel";
 import { useState } from "react";   
+
 const Home = ()  =>{
     const Authentication = false
     const [showModel,setShowModel] = useState()
@@ -11,8 +12,9 @@ const Home = ()  =>{
         setRegistration(true)
     }
     return (
+      
         <div className="UpperDiv">
-        <NavigationBar Display_Logo={false} Authentication={Authentication} setShowModel={setShowModel} showModel={showModel} setRegistration={setRegistration}/>
+        <NavigationBar Display_Logo={false}  setShowModel={setShowModel} showModel={showModel} setRegistration={setRegistration}/>
         <div className="mainDiv">
             <h1 className="main-tital-tag">Connecting college hearts, one swipe at a time.</h1>
             <button className="loginbutton" onClick={loginclick}>
@@ -21,6 +23,7 @@ const Home = ()  =>{
             {showModel && (<AuthenticationModel setShowModel={setShowModel} isRegistration={isRegistration}/>)}
         </div>
         </div>
+        
     )
 }
 export default Home

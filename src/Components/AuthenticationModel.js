@@ -27,7 +27,7 @@ const AuthenticationModel = ({setShowModel,isRegistration})  =>{
             <i className="fa fa-window-close"></i>
                 </div>
             <h3>{isRegistration ? 'Sign Up' : 'LOGIN'}</h3>
-            <p>By clicking on LOGIN you agree to our Privacy policy</p>
+            <p>By clicking on Submit you agree to our Privacy policy</p>
             <form onSubmit={click_submit}>
                 <input type="email" id="Student_email" name="Student_email" placeholder='Your student email' required={true} onChange={(e) => setEmail(e.target.value)}/>
                 <input type="password" id="password" name="password" placeholder='password' required={true} onChange={(e) => setPassword(e.target.value)}/>

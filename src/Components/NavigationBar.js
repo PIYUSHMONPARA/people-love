@@ -1,12 +1,13 @@
 import colorlogo from '../Images/People-Love-logos_transparent.png'
 import whiteLogo from '../Images/People-Love-logos_white.png'
 
-const NavigationBar = ({Display_Logo,Authentication,setShowModel,showModel,setRegistration})=>{
+const NavigationBar = ({Display_Logo,setShowModel,showModel,setRegistration})=>{
     const fun_login = () =>
     {
         setShowModel(true)
         setRegistration(false)
     }
+    const Authentication = false
     return (
         <nav>
             <div className="logo_div">
