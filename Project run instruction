@@ -1,0 +1,6 @@
+To start the project you have to open 2 terminals 
+Step 1 : Write command "npm run start" on first terminal.
+Step 2 : Open second terminal and write "cd BackEnd" and press enter.
+Step 3 : Write command "npm run start:BackEnd" and press enter.
+
+Note : Check the path of you terminal and it should be in "people-love" directory.
