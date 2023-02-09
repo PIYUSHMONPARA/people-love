@@ -1,15 +1,27 @@
 import { useState } from "react"
 import NavigationBar from "../Components/NavigationBar"
+import { useCookies } from 'react-cookie'
+import { useNavigate } from 'react-router-dom'
+import axios from "axios"
 
 const UserInfornation = () => {
-    const click_register = () => {
-        console.log("Value Submit")
+    const navigation = useNavigate();
+    const click_register = async(e) => {
+        e.preventDefault()
+        try{
+            const resp =  await axios.put('http://localhost:8000/updateuser',{forminputdata})
+            const issuccess = resp.status === 200
+            if(issuccess) navigation ('/DashBoard')
+            console.log('hello piyush')
+        }catch(error){
+            console.log(error)
+        }
     }
 
-
+    const [cookie,setCookie,removeCookie] = useCookies(['user'])
     const [forminputdata, setForminputdata] = useState({
-        user_id : '',
-        FirstName : '',
+        user_id : cookie.userid,
+        firstname : '',
         LastName : '',
         date_of_birth_day : '',
         date_of_birth_month : '',
@@ -17,7 +29,7 @@ const UserInfornation = () => {
         display_Gender : true,
         user_Gender : 'Male',
         Gender_Interested : 'Female',
-        email : '',
+        // email : cookie,
         image_url : '',
         about : '',
         matches :[]
@@ -41,8 +53,8 @@ const UserInfornation = () => {
                 <h2>CREATE ACCOUNT</h2>
                 <form onSubmit={click_register}>
                     <section>
-                        <label htmlFor="FirstName">First Name</label>
-                        <input type="text" id="FirstName" name="FirstName" placeholder="First Name" required={true} onChange={inputChange} value={forminputdata.FirstName} />
+                        <label htmlFor="firstname">First Name</label>
+                        <input type="text" id="firstname" name="firstname" placeholder="First Name" required={true} onChange={inputChange} value={forminputdata.FirstName} />
 
                         <label htmlFor="LastName">Last Name</label>
                         <input id="LastName" type="text" name="LastName" placeholder="Last Name" value={forminputdata.LastName} onChange={inputChange} />
@@ -88,7 +100,7 @@ const UserInfornation = () => {
                         <label htmlFor="url">Profile Image</label>
                         <input type="url" name="image_url" id="image_url" onChange={inputChange} required={true} />
                         <div className="image-container">
-                            <img src={forminputdata.image_url} alt="Profile" />
+                         { forminputdata.image_url && <img src={forminputdata.image_url} alt="Profile" />}
                         </div>
                     </section>
                 </form>
