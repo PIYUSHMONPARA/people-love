@@ -1,12 +1,13 @@
 import { useCookies } from 'react-cookie'
 const ChatBoxTitle = (user) =>{
     const [cookie,setCookie,removeCookie] = useCookies(['user'])
-    const logout = () =>{
-        removeCookie('userid',cookie.userid)
-        removeCookie('SecureKeyToekn',cookie.SecureKeyToekn)
-        removeCookie('Student_email',cookie.Student_email)
-        window.location.reload()
-    }
+    const logout = () => {
+        const { userid, SecureKeyToekn, Student_email } = cookie;
+        removeCookie('userid', userid);
+        removeCookie('SecureKeyToekn', SecureKeyToekn);
+        removeCookie('Student_email', Student_email);
+        window.location.href = '/';
+      };
 
     return (
         <div className="ChatBoxTitle_Container">

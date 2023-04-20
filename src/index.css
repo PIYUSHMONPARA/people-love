@@ -154,9 +154,9 @@ nav .nav-button:disabled{
   position: absolute;
   padding: 7px;
 }
-.txtinputchat{
+/* .txtinputchat{
   resize: none;
-}
+} */
 .card {
   /* position: relative; */
   background-color: #fff;
@@ -174,10 +174,10 @@ nav .nav-button:disabled{
   width: 100%;
   height: 100%;
 }
-
+/* 
 .swipe:last-of-type {
 
-}
+} */
 
 .card h3 {
   position: absolute;
@@ -238,9 +238,9 @@ nav .nav-button:disabled{
     width: 100%;
   }
 /* UserInformation Page CSS END */
-.Start_chat_input_Container{
+/* .Start_chat_input_Container{
   display: flex;
-}
+} */
 .chatBox_Container{
   text-align: left;
   z-index: 1;
@@ -272,13 +272,7 @@ nav .nav-button:disabled{
   padding: 21px;
   color: white;
 }
-.Use_img{
-  height: 25px;
-  width: 25px;
-  border-radius: 13px;
-  overflow: hidden;
-  margin: 8px;
-}
+
 
 /* For match display */
 
@@ -297,27 +291,116 @@ nav .nav-button:disabled{
     border-radius: 60px;
     margin-left: 10px;
 }
+
+/* Css for All_Chat container */
 .All_Chat_Container{
   padding: 19px;
   height: 40vh;
-  overflow-y: auto;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  
 }
-.Start_chat_input_Container{
+.sender {
+  text-align: left;
+}
+
+.Use_img{
+  height: 25px;
+  width: 25px;
+  border-radius: 13px;
+  overflow: hidden;
+  margin: 8px;
+}
+/* .receiver{
+  float: right;
+} */
+/* Css for All_Chat container  Ends */
+/* .Start_chat_input_Container{
   padding: 12px;
   display: flex;
   flex-direction: column;
-}
+} */
 /* .message_title{
 
 } */
 
 
 
-.sender {
-  text-align: right;
-}
+
 
 /* .receiver {
   background-color: white;
   float: left;
 } */
+.Start_chat_input_Container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  
+}
+
+.Start_chat_input_Container textarea {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 10px;
+  flex-grow: 1;
+  resize: none;
+}
+
+.Start_chat_input_Container button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.Start_chat_input_Container .sendMessage {
+  margin-top: 10px;
+  align-self: flex-end;
+}
+
+.Start_chat_input_Container .gifbutton {
+  margin-top: 10px;
+  align-self: flex-start;
+}
+
+.Start_chat_input_Container .gif-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 95%;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 1;
+}
+
+.Start_chat_input_Container .gif-container input[type="text"] {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.Start_chat_input_Container .gif-container .gif-results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.Start_chat_input_Container .gif-container .gif-results img {
+  margin: 5px;
+  cursor: pointer;
+  max-height: 100px;
+  max-width: 100px;
+}
+
+
