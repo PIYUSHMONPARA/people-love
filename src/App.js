@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Home from "./Pages/Home";
+import Login from "./Pages/UserInfornation";
+import DashBoard from "./Pages/DashBoard";
+import { useCookies } from 'react-cookie'
+import React, { Component }  from 'react';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 function App() {
+  const [cookie,setCookie,removeCookie] = useCookies(['user'])
+  const SecureKeyToekn = cookie.SecureKeyToekn
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+      <Route path="/" element = {<Home/>}/>
+      {SecureKeyToekn && <Route path="/UserInfornation" element = {<Login/>}/>}
+      {SecureKeyToekn && <Route path="/DashBoard" element = {<DashBoard/>}/>}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
