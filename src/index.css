@@ -404,3 +404,31 @@ nav .nav-button:disabled{
 }
 
 
+/* Card CSS for fliping the card  */
+/* .card {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card .front,
+.card .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card .back {
+  transform: rotateY(180deg);
+  padding: 20px;
+  box-sizing: border-box;
+} */

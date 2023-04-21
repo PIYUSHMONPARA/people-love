@@ -314,7 +314,7 @@ app.get('/messages', async (req, res) => {
 });
 
 
-app.put('/messages/:messageId/seen', async (req, res) => {
+app.put('/messagesseen/:messageId/seen', async (req, res) => {
     try {
       // Connect to MongoDB
       const client = new MongoClient(uri, {

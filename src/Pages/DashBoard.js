@@ -9,7 +9,7 @@ const DashBoard = () => {
   const [cookie, setCookie, removeCookie] = useCookies(['user'])
   const [genderProfile, setGenderProfile] = useState(null)
   const [lastDirection, setLastDirection] = useState()
-
+  const [isCardFlipped, setIsCardFlipped] = useState(false);
   const userid = cookie?.userid
 
   const getUser = async() => {
@@ -21,7 +21,7 @@ const DashBoard = () => {
     }
   }
 
-  const GetProfileGenderWise = async() => {
+  const getProfileGenderWise = async() => {
     try {
       const response = await axios.get(`http://localhost:8000/genderprofile?gender=${user?.gender_interest}`)
       const filteredByAge = response.data.filter(profile => {
@@ -52,16 +52,17 @@ const DashBoard = () => {
     if (direction === 'right') {
       updateMatches(swipedUser)
     }
+    setLastDirection(direction)
   }
 
   const outOfFrame = (name) => {
     console.log(name + ' left the screen!')
   }
+
   useEffect(() => {
     getUser()
-    GetProfileGenderWise()
-  },[getUser,GetProfileGenderWise])
-
+    getProfileGenderWise()
+  },[getUser,getProfileGenderWise])
 
   const matchedUserIds = user?.matches?.map(({user_id}) => user_id).concat(userid) || []
   const filteredProfiles = genderProfile?.filter(profile => !matchedUserIds.includes(profile.user_id)) || []
@@ -83,10 +84,15 @@ const DashBoard = () => {
                   <div style={{ backgroundImage: `url(${profile.url})` }} className='card'>
                     <h3>{profile.firstname}</h3>
                   </div>
+                  {/* <div className="flip-card-back">
+                    <h1>John Doe</h1> 
+                    <p>Architect & Engineer</p> 
+                    <p>We love that guy</p>
+                </div> */}
                 </TinderCard>
               ))}
             </div>
-            {lastDirection ? <h4>You swiped {lastDirection}</h4> : <h4/>}
+            {lastDirection && <h4>You swiped {lastDirection}</h4>}
           </div>
         </div>
       }
