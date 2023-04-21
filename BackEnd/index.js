@@ -1,25 +1,13 @@
-// require("dotenv").config();
 const cors = require("cors");
-// const passport = require("passport");
-// const cookieSession = require("cookie-session");
 const PORT = process.env.PORT || 8000
 const express = require('express')
-//
 const uri = 'mongodb+srv://People-Love:xU6yUbTmYsJnTWB7@cluster0.gjcbjqc.mongodb.net/Cluster0?retryWrites=true&w=majority'
-
 const { MongoClient } = require('mongodb');
-// const dbName = 'PEOPLE-LOVE';
-// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-//
-
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const {v1:uuidv1} = require('uuid');
 const { connect } = require("react-redux");
-// const passportSetup = require("./passport.js");
-// const authRoute = require("./routes/auth");
-// const uri = "mongodb+srv://People-Love:BStar@951@cluster0.gjcbjqc.mongodb.net/?retryWrites=true&w=majority";
-
+const path = require('path');
 
 //Google Auth
 // app.use(passport.initializen());
@@ -66,7 +54,11 @@ app.use(express.json())
 app.get('/',(req,res)=> {
     res.json('Peope Love')
 })
-
+//Deploy routes 
+// app.use(express.static(path.join(__dirname, 'public')));
+// app.get('/', function (req, res) {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 app.post('/login',async(req,res)=>{
     const client = new MongoClient(uri)
     const {Student_email, password} = req.body
@@ -256,6 +248,8 @@ app.put('/add_new_Match', async (req, res) => {
   app.post('/addMessage',async(req,res) => {
     const client = new MongoClient(uri);
     const message = req.body.message
+    const uuid = uuidv1()
+    message.messageId = uuid
     try{
         await client.connect();
         const database = client.db('app-data');
@@ -318,5 +312,35 @@ app.get('/messages', async (req, res) => {
         await client.close();
     }
 });
+
+
+app.put('/messages/:messageId/seen', async (req, res) => {
+    try {
+      // Connect to MongoDB
+      const client = new MongoClient(uri, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+      await client.connect();
+      const db = client.db();
+  
+      // Update the "seen" column of the message with the given ID
+      const messageId = req.params.messageId;
+      const result = await db.collection('messages').updateOne(
+        { _id: messageId },
+        { $set: { seen: true } }
+      );
+  
+      // Return success message
+      res.status(200).json({ message: `Message ${messageId} updated.` });
+    } catch (err) {
+      // Handle errors
+      console.log(err);
+      res.status(500).json({ error: err.message });
+    } finally {
+      // Close the connection to MongoDB
+      await client.close();
+    }
+  });
 
 app.listen(PORT,() => console.log('Server running on',PORT))

@@ -40,6 +40,7 @@ const Start_chat_input = (user, clickProfile, getuserIdforsender, getuserIdforre
       from_userid: userid,
       to_user: clickprofile,
       message: input_textarea,
+      messageId: "",
     };
     try {
       if(isChattingAllowed == true){

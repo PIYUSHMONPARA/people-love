@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 import { useState } from 'react'
 import React, { Component }  from 'react';
+import Swal from 'sweetalert2';
 // import { useNavigate } from 'react-router'
 const AuthenticationModel = ({setShowModel,isRegistration})  =>{
     const clickonDiv = ()=>{
         setShowModel(false)
     }
-    <script src=''></script>
     const [loading, setLoading] = useState(false);
     const navigation = useNavigate();
     const [cookie,setCookie,removeCookie] = useCookies(['user'])
@@ -22,7 +22,13 @@ const AuthenticationModel = ({setShowModel,isRegistration})  =>{
         e.preventDefault()
         try{
             if(isRegistration && (password !== conform_password)){
-                setError('Password and conform passwod does not match!')
+                //setError('Password and conform passwod does not match!')
+                Swal.fire({
+                    title: 'Password and conform passwod does not match!',
+                    text: 'Pass',
+                    icon: 'warning',
+                    confirmButtonText: 'OK'
+                  });
                 return
             }
                 const responsce = await axios.post(`http://localhost:8000/${isRegistration ? 'signup' : 'login'}`,{Student_email,password})

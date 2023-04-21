@@ -2,6 +2,7 @@
   "name": "people-love",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@giphy/js-fetch-api": "^4.8.1",
     "@react-spring/web": "^9.7.2",

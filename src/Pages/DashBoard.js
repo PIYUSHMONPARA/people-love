@@ -24,7 +24,13 @@ const DashBoard = () => {
   const GetProfileGenderWise = async() => {
     try {
       const response = await axios.get(`http://localhost:8000/genderprofile?gender=${user?.gender_interest}`)
-      setGenderProfile(response.data)
+      const filteredByAge = response.data.filter(profile => {
+        const age = new Date().getFullYear() - new Date(profile.date_of_birth_year, profile.date_of_birth_month - 1, profile.date_of_birth_day).getFullYear()
+        const minAge = user?.min_age_preference || 18
+        const maxAge = user?.max_age_preference || 99
+        return age >= minAge && age <= maxAge
+      })
+      setGenderProfile(filteredByAge)
     } catch (error) {
       console.log(error)
     }
